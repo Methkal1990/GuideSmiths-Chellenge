@@ -1,0 +1,29 @@
+.card-list {
+   
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  
+  /* Small devices (landscape phones, 576px and up)*/
+  @media (max-width: 576px) { 
+    .card-list {
+      grid-template-columns: 1fr;
+    }
+   }
+  
+  /* Medium devices (tablets, 768px and up)*/
+  @media (min-width: 577px) { 
+    .card-list {
+      grid-template-columns: 1fr 1fr;
+    }
+   }
+  
+  /* Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) { 
+    .card-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+   }
