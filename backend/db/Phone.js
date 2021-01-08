@@ -1,4 +1,3 @@
-const { doc } = require('./firestore-client');
 const firestore = require('./firestore-client');
 
 const getPhones = async () => {
@@ -15,5 +14,38 @@ const getSinglePhone = async (id) => {
   return phone;
 };
 
+const createPhone = async (phone) => {
+  console.log(phone);
+  await firestore.collection('phones').add({
+    name: phone.name,
+    color: phone.color,
+    description: phone.description,
+    imageUrl: phone.imageUrl,
+    lunch: phone.lunch,
+    platform: phone.platform,
+    price: phone.price,
+  });
+};
+
+const editPhone = async (id, updateData) => {
+  const phone = firestore.collection('phones').doc(id);
+  await phone.update({
+    name: updateData.name,
+    color: updateData.color,
+    description: updateData.description,
+    lunch: updateData.lunch,
+    platform: updateData.platform,
+    price: updateData.price,
+  });
+};
+
+const deletePhone = async (id) => {
+  const phone = firestore.collection('phones').doc(id);
+  await phone.delete();
+};
+
 module.exports.getPhones = getPhones;
 module.exports.getSinglePhone = getSinglePhone;
+module.exports.createPhone = createPhone;
+module.exports.deletePhone = deletePhone;
+module.exports.editPhone = editPhone;

@@ -8,11 +8,14 @@
   flex-direction: column;
 }
 
-.phone-card-close {
+.phone-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.phone-card-header > div {
   cursor: pointer;
-  display: inline-block;
-  align-self: flex-end;
-  font-size: 30px;
 }
 
 .phone-card-name {

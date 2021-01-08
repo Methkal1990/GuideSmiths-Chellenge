@@ -9,11 +9,17 @@ import './details-card.style.css';
 const DetailsCard = ({ match, history }) => {
   const [phone, setPhone] = useState({});
   const phoneid = match.params.phoneid;
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/v1/phones/${phoneid}`)
       .then((response) => setPhone({ ...response.data.data }));
   }, [phoneid]);
+
+  const deletePhone = async (id) => {
+    await axios.delete(`http://localhost:5000/api/v1/phones/${id}`);
+    history.push('/');
+  };
 
   const {
     name,
@@ -28,8 +34,17 @@ const DetailsCard = ({ match, history }) => {
     <>
       {phone ? (
         <div className='phone-card'>
-          <div className='phone-card-close' onClick={() => history.push('/')}>
-            X
+          <div className='phone-card-header'>
+            <div
+              onClick={() => history.push(`${match.url}/edit`)}
+              className='phone-card-edit'
+            >
+              Edit
+            </div>
+            <div onClick={() => deletePhone(phoneid)}>Delete</div>
+            <div className='phone-card-close' onClick={() => history.push('/')}>
+              X
+            </div>
           </div>
           <div className='card-image-box'>
             <img src={imageUrl} alt={name} />
