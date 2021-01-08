@@ -1,4 +1,4 @@
-const firestore = require('./firestore-client');
+const firestore = require('../db/firestore-client');
 
 const getPhones = async () => {
   const querySnapshot = await firestore.collection('phones').get();
@@ -44,6 +44,8 @@ const deletePhone = async (id) => {
   const phone = firestore.collection('phones').doc(id);
   await phone.delete();
 };
+
+
 
 module.exports.getPhones = getPhones;
 module.exports.getSinglePhone = getSinglePhone;

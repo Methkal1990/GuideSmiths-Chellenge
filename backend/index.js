@@ -1,11 +1,26 @@
+require('express-async-errors');
 const express = require('express');
-const phones = require('./routes/phones');
 const cors = require('cors');
+const helmet = require('helmet');
 
+const phones = require('./routes/phones');
+const error = require('./middlewares/error');
 
 const app = express();
+
+app.use(helmet());
 app.use(express.json());
 app.use(cors());
+
+process.on('uncaughtException', (ex) => {
+  console.log(ex.message);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (ex) => {
+  console.log(ex.message);
+  process.exit(1);
+});
 
 app.get('/', (req, res) => {
   res.send(`
@@ -19,6 +34,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/phones', phones);
+
+app.use(error);
 
 const port = process.env.PORT || 5000;
 

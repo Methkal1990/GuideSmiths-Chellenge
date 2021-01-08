@@ -1,12 +1,13 @@
 const express = require('express');
+const validate = require('../validators/Phone');
 const router = express.Router();
 const {
   getPhones,
   getSinglePhone,
   createPhone,
   deletePhone,
-  editPhone
-} = require('../db/Phone');
+  editPhone,
+} = require('../controllers/Phone');
 
 router.get('/', async (req, res) => {
   const phones = await getPhones();
@@ -20,14 +21,19 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const { error } = validate(req.body);
+  console.log(error);
+  if (error) return res.status(400).send(error.details[0].message);
   await createPhone(req.body);
   res.status(201).send({ success: true });
 });
 
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
   await editPhone(req.params.id, req.body);
-  res.status(204).send({success: true}); 
-})
+  res.status(204).send({ success: true });
+});
 
 router.delete('/:id', async (req, res) => {
   await deletePhone(req.params.id);
