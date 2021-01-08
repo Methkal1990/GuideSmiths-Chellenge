@@ -27,7 +27,7 @@ const CreateForm = ({ history }) => {
         'https://storage.googleapis.com/phone-catalog/apple-iphone-8-new.jpg',
     };
 
-    await axios.post('http://localhost:5000/api/v1/phones', phone);
+    await axios.post('/api/v1/phones', phone);
     history.push('/');
   };
 

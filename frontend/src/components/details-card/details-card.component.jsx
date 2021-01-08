@@ -12,12 +12,12 @@ const DetailsCard = ({ match, history }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/phones/${phoneid}`)
+      .get(`/api/v1/phones/${phoneid}`)
       .then((response) => setPhone({ ...response.data.data }));
   }, [phoneid]);
 
   const deletePhone = async (id) => {
-    await axios.delete(`http://localhost:5000/api/v1/phones/${id}`);
+    await axios.delete(`/api/v1/phones/${id}`);
     history.push('/');
   };
 

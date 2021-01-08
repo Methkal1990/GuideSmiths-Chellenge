@@ -9,7 +9,7 @@ export const CardList = ({phones}) => {
     return (
         <div className="card-list">
             {phones.map(phone => (
-         <Card key={phone.name} phone={phone}/>
+         <Card key={phone.id} phone={phone}/>
         ))}
         </div>
     );

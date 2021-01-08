@@ -11,7 +11,7 @@ const HomePage = ({ history }) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/v1/phones')
+      .get('/api/v1/phones')
       .then((response) => setPhones([...response.data.data]));
   }, []);
 

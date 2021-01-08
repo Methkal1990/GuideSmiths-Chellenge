@@ -9,7 +9,7 @@ const EditForm = ({ history, phoneid }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/phones/${phoneid}`)
+      .get(`/api/v1/phones/${phoneid}`)
       .then((res) => setPhone(res.data.data));
   }, [phoneid]);
 
@@ -35,7 +35,7 @@ const EditForm = ({ history, phoneid }) => {
       manufacturer: manufacturer.value,
     };
     await axios.put(
-      `http://localhost:5000/api/v1/phones/${phoneid}`,
+      `/api/v1/phones/${phoneid}`,
       updatedData
     );
     history.push('/');
