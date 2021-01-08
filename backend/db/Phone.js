@@ -15,7 +15,6 @@ const getSinglePhone = async (id) => {
 };
 
 const createPhone = async (phone) => {
-  console.log(phone);
   await firestore.collection('phones').add({
     name: phone.name,
     color: phone.color,
@@ -24,6 +23,7 @@ const createPhone = async (phone) => {
     lunch: phone.lunch,
     platform: phone.platform,
     price: phone.price,
+    manufacturer: phone.manufacturer,
   });
 };
 
@@ -36,6 +36,7 @@ const editPhone = async (id, updateData) => {
     lunch: updateData.lunch,
     platform: updateData.platform,
     price: updateData.price,
+    manufacturer: updateData.manufacturer,
   });
 };
 

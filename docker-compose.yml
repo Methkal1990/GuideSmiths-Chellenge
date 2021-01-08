@@ -1,0 +1,40 @@
+version: '3.2'
+
+services:
+  firestore_db:
+    image: mtlynch/firestore-emulator
+    environment:
+      - FIRESTORE_PROJECT_ID=dummy-project-id
+      - PORT=8200
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    environment:
+      - FIRESTORE_EMULATOR_HOST=firestore_db:8200
+      - FIRESTORE_PROJECT_ID=dummy-project-id
+    ports:
+      - '5000:5000'
+    restart: unless-stopped
+    depends_on:
+      - firestore_db
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+
+    
+
