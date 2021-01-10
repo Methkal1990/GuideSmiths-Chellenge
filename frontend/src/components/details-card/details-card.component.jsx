@@ -8,12 +8,19 @@ import './details-card.style.css';
 
 const DetailsCard = ({ match, history }) => {
   const [phone, setPhone] = useState({});
+  const [loading, setLoading] = useState(true);
   const phoneid = match.params.phoneid;
 
   useEffect(() => {
     axios
       .get(`/api/v1/phones/${phoneid}`)
-      .then((response) => setPhone({ ...response.data.data }));
+      .then((response) => {
+        setPhone({ ...response.data.data });
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [phoneid]);
 
   const deletePhone = async (id) => {
@@ -32,7 +39,9 @@ const DetailsCard = ({ match, history }) => {
   } = phone;
   return (
     <>
-      {phone ? (
+      {loading ? (
+        <LoaderLarge />
+      ) : (
         <div className='phone-card'>
           <div className='phone-card-header'>
             <div
@@ -58,8 +67,6 @@ const DetailsCard = ({ match, history }) => {
             <div>Description: {description}</div>
           </div>
         </div>
-      ) : (
-        <LoaderLarge />
       )}
     </>
   );

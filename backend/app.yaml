@@ -1,0 +1,5 @@
+runtime: custom
+env: flex
+
+env_variables:
+  FIRESTORE_PROJECT_ID: YOUR_PROJECT_ID

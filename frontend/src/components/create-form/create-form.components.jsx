@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import './createForm.styles.css';
+import './create-form.styles.css';
 
 const CreateForm = ({ history }) => {
   const handleSubmit = async (e) => {
@@ -23,8 +23,6 @@ const CreateForm = ({ history }) => {
       lunch: lunch.value,
       description: description.value,
       manufacturer: manufacturer.value,
-      imageUrl:
-        'https://storage.googleapis.com/phone-catalog/apple-iphone-8-new.jpg',
     };
 
     await axios.post('/api/v1/phones', phone);
@@ -33,7 +31,7 @@ const CreateForm = ({ history }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="form-box">
+      <form onSubmit={handleSubmit} className='form-box'>
         <div className='form__group field'>
           <input
             type='text'

@@ -1,18 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './home-page.style.css';
 
-import { CardList } from '../../components/card-list/card-list.component';
+import CardList from '../../components/card-list/card-list.component';
 import { LoaderLarge } from '../../components/loader/loader.component';
-import AddButton from '../../components/addButton/addButton.component';
+import AddButton from '../../components/add-button/add-button.component';
 
 const HomePage = ({ history }) => {
-  const [phones, setPhones] = useState([]);
+  const [phones, setPhones] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     axios
       .get('/api/v1/phones')
-      .then((response) => setPhones([...response.data.data]));
+      .then((response) => {
+        setPhones([...response.data.data]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -21,7 +28,7 @@ const HomePage = ({ history }) => {
 
       <AddButton history={history} />
 
-      {phones.length ? <CardList phones={phones} /> : <LoaderLarge />}
+      {loading ? <LoaderLarge /> : <CardList phones={phones} />}
     </div>
   );
 };

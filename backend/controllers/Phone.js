@@ -1,4 +1,5 @@
 const firestore = require('../db/firestore-client');
+const phonesImages = require('./phonesImageMock');
 
 const getPhones = async () => {
   const querySnapshot = await firestore.collection('phones').get();
@@ -15,11 +16,12 @@ const getSinglePhone = async (id) => {
 };
 
 const createPhone = async (phone) => {
+  const imageUrl = generateRandomImageUrl(phonesImages)
   await firestore.collection('phones').add({
     name: phone.name,
     color: phone.color,
     description: phone.description,
-    imageUrl: phone.imageUrl,
+    imageUrl,
     lunch: phone.lunch,
     platform: phone.platform,
     price: phone.price,
@@ -45,7 +47,11 @@ const deletePhone = async (id) => {
   await phone.delete();
 };
 
-
+// util function
+const generateRandomImageUrl = (imagesUrlArray) => {
+  const randomeIndex = Math.ceil(Math.random() * imagesUrlArray.length);
+  return imagesUrlArray[randomeIndex];
+};
 
 module.exports.getPhones = getPhones;
 module.exports.getSinglePhone = getSinglePhone;

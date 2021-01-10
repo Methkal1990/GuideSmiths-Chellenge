@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import './editForm.styles.css';
+import './edit-form.styles.css';
 import { LoaderLarge } from '../loader/loader.component';
 
 const EditForm = ({ history, phoneid }) => {

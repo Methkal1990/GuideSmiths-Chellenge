@@ -1,4 +1,4 @@
-import CreateForm from '../../components/createForm/createForm.components';
+import CreateForm from '../../components/create-form/create-form.components';
 import './create-page.styles.css'
 
 const CreatePage = ({history}) => {
