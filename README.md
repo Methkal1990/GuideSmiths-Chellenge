@@ -59,9 +59,9 @@ includes:
 
 The App is deployed on [Google App Engine](https://cloud.google.com/appengine) both the frontend and the backend.
 
-Backend: https://phones-project-300923.ew.r.appspot.com/
+Backend: *********************************
 
-Frontend: https://frontend-dot-phones-project-300923.ew.r.appspot.com/
+Frontend: *********************************
 
 ## How to use the REST API
 
