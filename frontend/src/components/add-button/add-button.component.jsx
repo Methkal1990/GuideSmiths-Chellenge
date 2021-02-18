@@ -1,6 +1,6 @@
 import './add-button.styles.css';
 
-const AddButton = ({  history }) => {
+const AddButton = ({ history }) => {
   return (
     <button onClick={() => history.push('phone/create')} className='add-button'>
       +

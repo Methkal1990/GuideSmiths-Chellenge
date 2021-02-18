@@ -16,7 +16,7 @@ const getSinglePhone = async (id) => {
 };
 
 const createPhone = async (phone) => {
-  const imageUrl = generateRandomImageUrl(phonesImages)
+  const imageUrl = generateRandomImageUrl(phonesImages);
   await firestore.collection('phones').add({
     name: phone.name,
     color: phone.color,

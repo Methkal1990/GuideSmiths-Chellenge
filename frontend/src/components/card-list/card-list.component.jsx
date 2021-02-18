@@ -14,7 +14,7 @@ const CardList = ({ phones }) => {
           ))}
         </div>
       ) : (
-        <div>No Results. Create new Phones data</div>
+        <div>No Results. Create new Phones data or search again</div>
       )}
     </>
   );

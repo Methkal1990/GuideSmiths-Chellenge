@@ -55,6 +55,7 @@ const EditForm = ({ history, phoneid }) => {
               onChange={(e) => setPhone({ ...phone, name: e.target.value })}
               className='form__field'
               required
+              maxLength="25"
             />
             <label htmlFor='name' className='form__label'>
               Name
@@ -70,6 +71,7 @@ const EditForm = ({ history, phoneid }) => {
               onChange={(e) => setPhone({ ...phone, color: e.target.value })}
               className='form__field'
               required
+              maxLength="25"
             />
             <label htmlFor='color' className='form__label'>
               Color
@@ -85,6 +87,7 @@ const EditForm = ({ history, phoneid }) => {
               onChange={(e) => setPhone({ ...phone, lunch: e.target.value })}
               className='form__field'
               required
+              maxLength="25"
             />
             <label htmlFor='lunch' className='form__label'>
               Lunch
@@ -102,6 +105,7 @@ const EditForm = ({ history, phoneid }) => {
               }
               className='form__field'
               required
+              maxLength="25"
             />
             <label htmlFor='manufacturer' className='form__label'>
               Manufacturer
@@ -117,6 +121,7 @@ const EditForm = ({ history, phoneid }) => {
               onChange={(e) => setPhone({ ...phone, platform: e.target.value })}
               className='form__field'
               required
+              maxLength="25"
             />
             <label htmlFor='platform' className='form__label'>
               Platform
@@ -132,6 +137,8 @@ const EditForm = ({ history, phoneid }) => {
               onChange={(e) => setPhone({ ...phone, price: e.target.value })}
               className='form__field'
               required
+              max="10000"
+              min="0"
             />
             <label htmlFor='price' className='form__label'>
               Price $
@@ -150,6 +157,7 @@ const EditForm = ({ history, phoneid }) => {
               }
               className='field textarea'
               required
+              maxLength="250"
             />
           </div>
           <input type='submit' className='submit' />

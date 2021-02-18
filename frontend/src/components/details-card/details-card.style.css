@@ -25,10 +25,16 @@
 }
 
 .phone-card-content {
-  color: #666;
-  font-weight: 600;
+  color: #333;
+  font-weight: 300;
 }
 
-.phone-card-content div {
-  padding: 10px;
+.phone-card-content > p {
+  word-wrap: break-word;
+}
+
+.phone-card-content > p > span {
+  font-size: 0.8rem;
+  color: #111;
+  font-weight: 400;
 }

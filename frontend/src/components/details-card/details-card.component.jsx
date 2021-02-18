@@ -19,7 +19,7 @@ const DetailsCard = ({ match, history }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        history.push('/');
       });
   }, [phoneid]);
 
@@ -60,11 +60,22 @@ const DetailsCard = ({ match, history }) => {
           </div>
           <div className='phone-card-name'>{name}</div>
           <div className='phone-card-content'>
-            <div>Price : {price}</div>
-            <div>Color: {color}</div>
-            <div>Manufacturer: {manufacturer}</div>
-            <div>Platform: {platform}</div>
-            <div>Description: {description}</div>
+            <p>
+              Price : <span>{price}</span>
+            </p>
+            <p>
+              Color: <span>{color}</span>
+            </p>
+            <p>
+              Manufacturer: <span>{manufacturer}</span>
+            </p>
+            <p>
+              Platform: <span>{platform}</span>
+            </p>
+            <p>
+              Description:
+              <br /> <span>{description}</span>
+            </p>
           </div>
         </div>
       )}

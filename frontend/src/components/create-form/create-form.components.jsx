@@ -40,6 +40,7 @@ const CreateForm = ({ history }) => {
             id='name'
             placeholder='phone name'
             required
+            maxLength='25'
           />
           <label htmlFor='name' className='form__label'>
             Name
@@ -53,6 +54,7 @@ const CreateForm = ({ history }) => {
             placeholder='phone color'
             className='form__field'
             required
+            maxLength='25'
           />
           <label htmlFor='color' className='form__label'>
             Color
@@ -66,6 +68,7 @@ const CreateForm = ({ history }) => {
             placeholder='phone lunch year'
             className='form__field'
             required
+            maxLength='25'
           />
           <label htmlFor='lunch' className='form__label'>
             Lunch
@@ -79,6 +82,7 @@ const CreateForm = ({ history }) => {
             placeholder='phone manufacturer name'
             className='form__field'
             required
+            maxLength='25'
           />
           <label htmlFor='manufacturer' className='form__label'>
             Manufacturer
@@ -92,6 +96,7 @@ const CreateForm = ({ history }) => {
             placeholder='phone platform'
             className='form__field'
             required
+            maxLength='25'
           />
           <label htmlFor='platform' className='form__label'>
             Platform
@@ -105,6 +110,8 @@ const CreateForm = ({ history }) => {
             placeholder='phone price'
             className='form__field'
             required
+            max='10000'
+            min='0'
           />
           <label htmlFor='price' className='form__label'>
             Price $
@@ -119,6 +126,7 @@ const CreateForm = ({ history }) => {
             id='description'
             className='field textarea'
             required
+            maxLength='250'
           ></textarea>
         </div>
         <input type='submit' className='submit' />
